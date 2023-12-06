@@ -3,7 +3,7 @@ package com.test.mapper.country;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.test.controllers.country.dto.CountryDTO;
+import com.test.controller.country.dto.CountryDTO;
 import com.test.persistence.entities.country.CountryEntity;
 import com.test.util.pager.CustomPage;
 

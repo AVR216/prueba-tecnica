@@ -3,7 +3,7 @@ package com.test.mapper.session;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.test.controllers.session.dto.SessionDTO;
+import com.test.controller.session.dto.SessionDTO;
 import com.test.persistence.entities.session.SessionEntity;
 import com.test.util.pager.CustomPage;
 

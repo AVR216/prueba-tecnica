@@ -22,7 +22,7 @@ public class CountryService implements ICountryService {
 	@Override
 	public CustomPage<CountryEntity> getAll(PaginatorCommand command) {
 
-		var page = this.countryRepository.findAll(PageRequestBuilder.buildPageRequest(command));
+		var page = this.countryRepository.customFindAll(PageRequestBuilder.buildPageRequest(command));
 
 		return PageRequestBuilder.buildCustomPage(page, command);
 	}

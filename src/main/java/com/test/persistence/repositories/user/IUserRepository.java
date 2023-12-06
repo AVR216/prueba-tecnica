@@ -1,5 +1,7 @@
 package com.test.persistence.repositories.user;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +17,7 @@ public interface IUserRepository extends PagingAndSortingRepository<UserEntity, 
 	@Query(value = UserRepositoryConstants.CUSTOM_FIND_ALL)
 	Page<UserEntity> customFindAll(Pageable pageable);
 
+	Optional<UserEntity> findByEmail(String email);
+
+	Optional<UserEntity> findById(String id);
 }

@@ -11,7 +11,7 @@ import com.test.persistence.entities.country.CountryEntity;
 @Repository
 public interface ICountryRepository extends PagingAndSortingRepository<CountryEntity, String> {
 
-	@Query(value = "")
+	@Query(value = "SELECT ce FROM CountryEntity ce JOIN FETCH ce.users")
 	Page<CountryEntity> customFindAll(Pageable pageable);
 
 }

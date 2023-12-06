@@ -3,7 +3,7 @@ package com.test.mapper.usermonitoring;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.test.controllers.usermonitoring.dto.UserMonitoringDTO;
+import com.test.controller.usermonitoring.dto.UserMonitoringDTO;
 import com.test.persistence.entities.usermonitoring.UserMonitoringEntity;
 import com.test.util.pager.CustomPage;
 
