@@ -17,6 +17,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Class to define a Session structure
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Entity
 @Table(name = "\"Session\"")
 @Getter
@@ -28,17 +35,17 @@ public class SessionEntity {
 
 	@Id
 	private String id;
-	
+
 	@Column(name = "\"sessionToken\"")
 	private String sessionToken;
-	
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "\"userId\"")
 	private UserEntity user;
-	
+
 	@Column(name = "\"expiresAt\"")
 	private LocalDateTime expiresAt;
-	
+
 	@Column(name = "\"createdAt\"")
 	private LocalDateTime createdAt;
 }

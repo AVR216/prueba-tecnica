@@ -10,9 +10,9 @@ import com.test.util.pager.CustomPage;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IRoleMapper {
 
-	RoleDTO toTestDto(RoleEntity entity);
+	RoleDTO toRoleDto(RoleEntity entity);
 
-	RoleEntity toTest(RoleDTO dto);
+	RoleEntity toRole(RoleDTO dto);
 
 	CustomPage<RoleDTO> toDtoPage(CustomPage<RoleEntity> entityPage);
 

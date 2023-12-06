@@ -7,6 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class used to define user data from session
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor

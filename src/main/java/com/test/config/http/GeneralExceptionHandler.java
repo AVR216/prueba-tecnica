@@ -13,6 +13,13 @@ import com.test.util.messages.MessagesEnum;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * General exception handler
+ * 
+ * @author Jhon Villalba
+ *
+ */
+
 @Slf4j
 @RestControllerAdvice
 public class GeneralExceptionHandler {

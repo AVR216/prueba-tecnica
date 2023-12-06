@@ -5,6 +5,13 @@ import java.time.LocalDate;
 import com.test.util.messages.ExceptionBuilder;
 import com.test.util.messages.MessagesEnum;
 
+/**
+ * Utility class to validate two dates
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 public class DateUtil {
 
 	private DateUtil() {

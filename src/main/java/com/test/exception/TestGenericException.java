@@ -2,6 +2,13 @@ package com.test.exception;
 
 import lombok.Getter;
 
+/**
+ * Class to define a general project exception
+ * 
+ * @author Jhon Villalba
+ *
+ */
+
 @Getter
 public class TestGenericException extends RuntimeException {
 

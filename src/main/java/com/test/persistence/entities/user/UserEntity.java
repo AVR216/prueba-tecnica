@@ -22,6 +22,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Class to define a User structure
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Entity
 @Table(name = "\"User\"")
 @Getter
@@ -33,7 +40,7 @@ import lombok.ToString;
 public class UserEntity {
 
 	private static final String COUNTRY_USER = "\"public\".\"_CountryToUser\"";
-	
+
 	@Id
 	@Column(name = "id")
 	private String id;
@@ -64,9 +71,6 @@ public class UserEntity {
 	private RoleEntity role;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-			name = COUNTRY_USER, 
-			joinColumns = @JoinColumn(name = "\"B\""), 
-			inverseJoinColumns = @JoinColumn(name = "\"A\""))
+	@JoinTable(name = COUNTRY_USER, joinColumns = @JoinColumn(name = "\"B\""), inverseJoinColumns = @JoinColumn(name = "\"A\""))
 	private Set<CountryEntity> countries;
 }
