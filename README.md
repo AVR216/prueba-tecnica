@@ -6,6 +6,17 @@ muy importantes. Es una arquitectura bastante conocida, así que será facil dar
 
 ### Desarrollo
 
+Para probar el desarrollo se comparte una colección en postman debido a que no se alcanzó a implementar Open Api.
+
+- El primer paso es loguearse en el endpoint /signin enviando el correo en el body
+- Posteriormente si el usuario tiene registro de sesion se devolverá el token
+- Con el token se puede agregar el header Authorization en todas las demás peticiones.
+
+#### Tecnologías
+
+- Java 17
+- SpringBoot 3.1.3
+
 Se utiliza el tipo de Carga perezosa al momento de relacionar las diferentes entidades, esto con la finalidad de que las relaciones con las demás entidades solo se carguen cuando
 sea necesario.
 
