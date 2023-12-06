@@ -1,5 +1,7 @@
 package com.test.services.usermonitoring.imp;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +33,17 @@ public class UserMonitoringService implements IUserMonitoringService {
 	@Override
 	public CustomPage<UserMonitoringEntity> findById(PaginatorCommand command, String id) {
 		var page = this.userMonitoringRepository.findByUserId(PageRequestBuilder.buildPageRequest(command), id);
+		return PageRequestBuilder.buildCustomPage(page, command);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public CustomPage<UserMonitoringEntity> findByDateAndEmail(PaginatorCommand command, String email,
+			LocalDateTime startDate, LocalDateTime endDate) {
+
+		var page = this.userMonitoringRepository.findByDateAndEmail(PageRequestBuilder.buildPageRequest(command), email,
+				startDate, endDate);
+
 		return PageRequestBuilder.buildCustomPage(page, command);
 	}
 

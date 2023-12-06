@@ -1,5 +1,7 @@
 package com.test.persistence.repositories.usermonitoring;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +19,8 @@ public interface IUserMonitoringRepository extends PagingAndSortingRepository<Us
 
 	@Query(value = "SELECT ume FROM UserMonitoringEntity ume JOIN FETCH ume.user u WHERE u.id = :userId")
 	Page<UserMonitoringEntity> findByUserId(Pageable pageable, @Param("userId") String userId);
+
+	@Query(value = "SELECT ume FROM UserMonitoringEntity ume JOIN FETCH ume.user u WHERE u.email = :email AND ume.createdAt BETWEEN :startDate AND :endDate")
+	Page<UserMonitoringEntity> findByDateAndEmail(Pageable pageable, @Param("email") String email,
+			@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 }
