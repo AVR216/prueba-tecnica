@@ -6,6 +6,12 @@ import org.springframework.data.domain.Pageable;
 
 import com.test.services.models.PaginatorCommand;
 
+/**
+ * Clase used to build a CustomPage
+ * 
+ * @author jhonvillalba
+ *
+ */
 public class PageRequestBuilder {
 
 	private PageRequestBuilder() {

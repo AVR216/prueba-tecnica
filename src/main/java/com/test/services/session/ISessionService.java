@@ -6,6 +6,12 @@ import com.test.util.pager.CustomPage;
 
 public interface ISessionService {
 
+	/**
+	 * Method used to get session list
+	 * 
+	 * @param command
+	 * @return CustomPage of entity
+	 */
 	CustomPage<SessionEntity> getAll(PaginatorCommand command);
 
 }

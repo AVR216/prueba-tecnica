@@ -16,6 +16,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class to define a Country structure
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Entity
 @Table(name = "\"Country\"")
 @Getter
@@ -23,18 +30,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CountryEntity {
-	
+
 	@Id
 	private String id;
-	
+
 	private String name;
-	
+
 	@Column(name = "\"createdAt\"")
 	private LocalDateTime createdAt;
-	
+
 	@Column(name = "\"updatedAt\"")
 	private LocalDateTime updatedAt;
-	
+
 	@ManyToMany(mappedBy = "countries", fetch = FetchType.LAZY)
-    private Set<UserEntity> users;
+	private Set<UserEntity> users;
 }

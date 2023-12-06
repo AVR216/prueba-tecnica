@@ -16,6 +16,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class to define a UserMonitoring structure
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Entity
 @Table(name = "\"UserMonitoring\"")
 @Getter

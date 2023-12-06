@@ -10,17 +10,18 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.test.persistence.entities.usermonitoring.UserMonitoringEntity;
+import com.test.persistence.repositories.usermonitoring.constants.UsermonitoringRepositoryConstants;
 
 @Repository
 public interface IUserMonitoringRepository extends PagingAndSortingRepository<UserMonitoringEntity, String> {
 
-	@Query(value = "SELECT ume FROM UserMonitoringEntity ume JOIN FETCH ume.user")
+	@Query(value = UsermonitoringRepositoryConstants.CUSTOM_FIND_ALL)
 	Page<UserMonitoringEntity> customFindAll(Pageable pageable);
 
-	@Query(value = "SELECT ume FROM UserMonitoringEntity ume JOIN FETCH ume.user u WHERE u.id = :userId")
+	@Query(value = UsermonitoringRepositoryConstants.FIND_BY_USER_ID)
 	Page<UserMonitoringEntity> findByUserId(Pageable pageable, @Param("userId") String userId);
 
-	@Query(value = "SELECT ume FROM UserMonitoringEntity ume JOIN FETCH ume.user u WHERE u.email = :email AND ume.createdAt BETWEEN :startDate AND :endDate")
+	@Query(value = UsermonitoringRepositoryConstants.FIND_BY_DATE_AND_EMAIL)
 	Page<UserMonitoringEntity> findByDateAndEmail(Pageable pageable, @Param("email") String email,
 			@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 }

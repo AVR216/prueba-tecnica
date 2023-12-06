@@ -8,12 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.test.persistence.entities.session.SessionEntity;
+import com.test.persistence.repositories.session.constants.SessionRepositoryConstants;
 
 @Repository
 public interface ISessionRepository extends PagingAndSortingRepository<SessionEntity, String> {
 
-	@Query(value = "SELECT s FROM SessionEntity s JOIN FETCH s.user su JOIN FETCH su.role WHERE s.sessionToken = :token")
-	Optional<SessionEntity> findBySessionToken(@Param("token")String sessionToken);
-	
+	@Query(value = SessionRepositoryConstants.FIND_BY_TOKEN)
+	Optional<SessionEntity> findBySessionToken(@Param("token") String sessionToken);
+
 	Optional<SessionEntity> findByUserId(String userId);
 }

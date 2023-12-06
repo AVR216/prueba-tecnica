@@ -1,9 +1,17 @@
 package com.test.util.auth;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.test.persistence.entities.role.RoleEnum;
 import com.test.security.model.CustomUserDetail;
 import com.test.services.models.UserData;
+
+/**
+ * utility class to obtain information of the authenticated user
+ * 
+ * @author jhonvillalba
+ *
+ */
 
 public class AuthUtil {
 

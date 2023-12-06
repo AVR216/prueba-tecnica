@@ -14,6 +14,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Class to define a Role structure
+ * 
+ * @author jhonvillalba
+ *
+ */
+
 @Entity
 @Table(name = "\"Role\"")
 @Getter
@@ -25,12 +32,12 @@ public class RoleEntity {
 
 	@Id
 	private String id;
-	
+
 	@Column(name = "name")
 	@Enumerated(EnumType.STRING)
 	private RoleEnum name;
-	
+
 	@Column(name = "\"createdAt\"")
 	private LocalDateTime createdAt;
-	
+
 }

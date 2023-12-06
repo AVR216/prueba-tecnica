@@ -6,6 +6,13 @@ import org.springframework.http.ResponseEntity;
 import com.test.exception.TestGenericException;
 import com.test.util.messages.MessagesEnum;
 
+/**
+ * Class to build a response entity
+ * 
+ * @author Jhon Villalba
+ *
+ */
+
 public class ResponseMessageBuilder {
 
 	private ResponseMessageBuilder() {
@@ -21,7 +28,7 @@ public class ResponseMessageBuilder {
 
 		return ResponseEntity.status(HttpStatus.valueOf(messageEnum.getCode())).body(response);
 	}
-	
+
 	public static ResponseEntity<ResponseMessage<Void>> buildErrorResponse(TestGenericException ex) {
 
 		var response = new ResponseMessage<Void>();

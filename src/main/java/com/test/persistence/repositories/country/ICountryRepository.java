@@ -8,13 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.test.persistence.entities.country.CountryEntity;
+import com.test.persistence.repositories.country.constants.CountryRepositoryConstants;
 
 @Repository
 public interface ICountryRepository extends PagingAndSortingRepository<CountryEntity, String> {
 
-	@Query(value = "SELECT ce FROM CountryEntity ce JOIN FETCH ce.users")
+	@Query(value = CountryRepositoryConstants.CUSTOM_FIND_ALL)
 	Page<CountryEntity> customFindAll(Pageable pageable);
 
-	@Query(value = "SELECT ce FROM CountryEntity ce JOIN FETCH ce.users cu WHERE cu.id = :userId")
+	@Query(value = CountryRepositoryConstants.FIND_BY_USER)
 	Page<CountryEntity> findByUser(Pageable pageable, @Param("userId") String id);
 }

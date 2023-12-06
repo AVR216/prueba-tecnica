@@ -9,6 +9,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Class to wrap the answer
+ * 
+ * @author Jhon Villalba
+ *
+ * @param <T>
+ */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
 @Getter
@@ -20,5 +28,5 @@ public class ResponseMessage<T> {
 	private String code;
 	private String message;
 	private T content;
-	
+
 }
