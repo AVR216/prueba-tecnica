@@ -10,9 +10,9 @@ import com.test.util.pager.CustomPage;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ICountryMapper {
 
-	CountryDTO toTestDto(CountryEntity entity);
+	CountryDTO toCountryDto(CountryEntity entity);
 
-	CountryEntity toTest(CountryDTO dto);
+	CountryEntity toCountry(CountryDTO dto);
 
 	CustomPage<CountryDTO> toDtoPage(CustomPage<CountryEntity> entityPage);
 

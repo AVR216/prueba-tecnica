@@ -27,4 +27,13 @@ public class CountryService implements ICountryService {
 		return PageRequestBuilder.buildCustomPage(page, command);
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public CustomPage<CountryEntity> findAllById(PaginatorCommand command, String id) {
+
+		var page = this.countryRepository.findByUser(PageRequestBuilder.buildPageRequest(command), id);
+
+		return PageRequestBuilder.buildCustomPage(page, command);
+	}
+
 }

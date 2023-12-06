@@ -24,7 +24,7 @@ public class AuthController {
 	@PostMapping
 	ResponseEntity<Map<String, Object>> signin(@RequestBody UserLoginDTO loginInfo) {
 
-		var token = this.authService.getSession(loginInfo.getEmail());
+		var token = this.authService.getSession(loginInfo.getEmail().trim());
 
 		var response = new HashMap<String, Object>();
 		response.put("token", token);

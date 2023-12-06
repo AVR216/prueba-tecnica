@@ -8,4 +8,5 @@ public interface IUserMonitoringService {
 
 	CustomPage<UserMonitoringEntity> getAll(PaginatorCommand command);
 
+	CustomPage<UserMonitoringEntity> findById(PaginatorCommand command, String id);
 }
