@@ -4,6 +4,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,14 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.test.config.http.ResponseMessage;
 import com.test.config.http.ResponseMessageBuilder;
 import com.test.controller.constants.RestConstants;
+import com.test.controller.usermonitoring.dto.UserMonitoringByDateDTO;
 import com.test.controller.usermonitoring.dto.UserMonitoringDTO;
 import com.test.mapper.usermonitoring.IUserMonitoringMapper;
 import com.test.services.models.PaginatorCommand;
 import com.test.services.usermonitoring.IUserMonitoringService;
 import com.test.util.auth.AuthUtil;
+import com.test.util.date.DateUtil;
 import com.test.util.messages.MessagesEnum;
 import com.test.util.pager.CustomPage;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -54,6 +59,24 @@ public class UserMonitoringController {
 		var command = new PaginatorCommand(page, size);
 
 		var responsePage = this.userMonitoringService.getAll(command);
+
+		return ResponseMessageBuilder.buildResponse(userMonitoringMapper.toDtoPage(responsePage),
+				MessagesEnum.SUCCESSFULLY_OPERATION);
+	}
+
+	@PreAuthorize("hasAnyAuthority('Admin')")
+	@PostMapping(path = { "/by-date" })
+	ResponseEntity<ResponseMessage<CustomPage<UserMonitoringDTO>>> findByDate(
+			@RequestParam(name = RestConstants.PAGE_PARAM_NAME, required = false, defaultValue = RestConstants.DEFAULT_PAGE) Integer page,
+			@RequestParam(name = RestConstants.SIZE_PARAM_NAME, required = false, defaultValue = RestConstants.DEFAULT_SIZE) Integer size,
+			@Valid @RequestBody UserMonitoringByDateDTO dto) {
+
+		var command = new PaginatorCommand(page, size);
+
+		DateUtil.endDateBefore(dto.getStartDate(), dto.getEndDate());
+
+		var responsePage = this.userMonitoringService.findByDateAndEmail(command, dto.getEmail(),
+				dto.getStartDate().atStartOfDay(), dto.getEndDate().atStartOfDay());
 
 		return ResponseMessageBuilder.buildResponse(userMonitoringMapper.toDtoPage(responsePage),
 				MessagesEnum.SUCCESSFULLY_OPERATION);

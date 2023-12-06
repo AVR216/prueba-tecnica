@@ -2,6 +2,7 @@ package com.test.config.http;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -34,6 +35,10 @@ public class GeneralExceptionHandler {
 		if (ex instanceof AccessDeniedException) {
 			return ResponseMessageBuilder
 					.buildErrorResponse(ExceptionBuilder.buildException(MessagesEnum.INVALID_ROLE));
+		}
+
+		if (ex instanceof MethodArgumentNotValidException) {
+			return ResponseMessageBuilder.buildErrorResponse(ExceptionBuilder.buildException(MessagesEnum.BAD_REQUEST));
 		}
 
 		return ResponseEntity.internalServerError().body(new ResponseMessage<Void>(MessagesEnum.UNKNOWN_ERROR.name(),
