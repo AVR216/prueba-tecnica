@@ -8,4 +8,5 @@ public interface ICountryService {
 
 	CustomPage<CountryEntity> getAll(PaginatorCommand command);
 
+	CustomPage<CountryEntity> findAllById(PaginatorCommand command, String id);
 }

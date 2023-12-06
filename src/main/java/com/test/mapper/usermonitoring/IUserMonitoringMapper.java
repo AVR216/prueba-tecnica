@@ -10,9 +10,9 @@ import com.test.util.pager.CustomPage;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IUserMonitoringMapper {
 
-	UserMonitoringDTO toTestDto(UserMonitoringEntity entity);
+	UserMonitoringDTO toUserMonitoringDto(UserMonitoringEntity entity);
 
-	UserMonitoringEntity toTest(UserMonitoringDTO dto);
+	UserMonitoringEntity toUserMonitoring(UserMonitoringDTO dto);
 
 	CustomPage<UserMonitoringDTO> toDtoPage(CustomPage<UserMonitoringEntity> entityPage);
 }

@@ -1,7 +1,6 @@
 package com.test.controller.country.dto;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,5 +25,4 @@ public class CountryDTO {
 
 	private LocalDateTime updatedAt;
 
-	private Set<CountryUserDTO> users;
 }

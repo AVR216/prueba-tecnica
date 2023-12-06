@@ -27,4 +27,11 @@ public class UserMonitoringService implements IUserMonitoringService {
 		return PageRequestBuilder.buildCustomPage(page, command);
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public CustomPage<UserMonitoringEntity> findById(PaginatorCommand command, String id) {
+		var page = this.userMonitoringRepository.findByUserId(PageRequestBuilder.buildPageRequest(command), id);
+		return PageRequestBuilder.buildCustomPage(page, command);
+	}
+
 }
